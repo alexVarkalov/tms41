@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} Catdog {% endblock %}
+
+{% block content %}
+
+<img src="{{ image }}" alt="{{ image }}" width="400px" height="400px">
+
+
+<form action={% url 'home' %} method="get">
+    {% csrf_token %}
+    <input type="submit" value="Go home">
+</form>
+
+<form action={% url 'send-image' %} method="post">
+    {% csrf_token %}
+    {{ send_form.as_p }}
+    <input type="submit" value="Send">
+</form>
+
+{% endblock %}
+
+
